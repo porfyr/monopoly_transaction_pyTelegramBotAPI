@@ -1,0 +1,2 @@
+# monopoly_transaction_pyTelegramBotAPI
+Telegram bot performs game transactions between players who is signed in bot. All sign up operations are restoring after typing /newgame command or bot restart. Every player receives 1500 coins at the start. Attention! The bot speaks only Ukrainian, you should read comments in code or even edit the strings of code. If you don't know what to do with code, read https://core.telegram.org/bots
