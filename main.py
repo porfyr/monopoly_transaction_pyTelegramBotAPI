@@ -2,15 +2,14 @@
 
 import telebot
 from telebot import types, TeleBot
-import time
 
 bot: TeleBot = telebot.TeleBot(
-    '<TOKEN>')          # If you don't know what to do with that, read https://core.telegram.org/bots
+    '5239532565:AAFZZIcBy93DxEt8vsrGWTxKhQiSzdnzFlw')          # If you don't know what to do with that, read https://core.telegram.org/bots
 
 
 @bot.message_handler(commands=['start'])  # Start op bot
 def send_welcome(message):
-    bot.send_message(message.chat.id, "Є контакт")       # It works
+    bot.send_message(message.chat.id, "Є контакт")
 
 
 @bot.message_handler(commands=['newgame'])
@@ -51,7 +50,7 @@ def command_help(m):
     bot.send_message(cid,
                      f"Всім видано по 0 гривнів\nСума звичайно вас не влаштовує, тож нехай кожен гравець сам зробить собі стартерпак")  # Everyone got 0 coins, so let every player make his own starterpack
     bot.send_message(cid,
-                     "<b>Важно!</b>\n\nЩоб здійснити транзакцію, потрібно написати в чат за таким шаблоном:\n    @\"нікнейм отримувача\" \"cума гривнів\"\nМожна просто в банку взяти певну суму, написавши її сюди без ніків (той же стартерпак)\n  навіть штраф, поставивши перед сумою мінус.\nЯкщо діло дойшло до програшу, пиши команду /leavegame (не тицяй на неї блядь)", parse_mode="html")  # To make transaction, type @<username> <quantity of money> or just <quantity of money> optional with minus before -<quantity of money> pay fine
+                     "<b>Важно!</b>\n\nЩоб здійснити транзакцію, потрібно написати в чат за таким шаблоном:\n    @\"нікнейм отримувача\" \"cума гривнів\"\nМожна просто в банку взяти певну суму, написавши її сюди без ніків (той же стартерпак)\n  навіть штраф, поставивши перед сумою мінус.\nЯкщо діло дойшло до програшу, пиши команду /leavegame (не тицяй на неї блядь)", parse_mode="html")  # To make transaction, pls type @<username> <quantity of money>
     bot.send_message(m.chat.id, "\n".join(i + " – " + str(players[i]) for i in players) + "\n\nУдачі")
 
 
@@ -62,7 +61,7 @@ def leave_game(m):
     bot.send_message(cid, f" {m.from_user.first_name} лівнув")  # Some player left
     if len(players) == 0:
         bot.send_message(cid, "Всі вийшли")
-        bot.send_message(cid, "Кунець")                 # The end of the game
+        bot.send_message(cid, "Кунець")
 
 
 @bot.message_handler(content_types='text')
@@ -89,7 +88,7 @@ def payment(m):
                 except ValueError:
                     bot.reply_to(m, "Неправильний формат написання суми транзакції")  # Non correct format of writing the sum of money
         elif players[m.from_user.username] <= int(m.text[m.text.rfind(" "):]):
-            bot.reply_to(m, "Кредити в грі не передбачені")                 # No credits, player haven't enough money
+            bot.reply_to(m, "Кредити в грі не передбачені")
     else:
         bot.reply_to(m, "Ти не в грі, не мішай людям грати")  # You are not in the game
 
