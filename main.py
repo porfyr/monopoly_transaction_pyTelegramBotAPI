@@ -4,7 +4,7 @@ import telebot
 from telebot import types, TeleBot
 
 bot: TeleBot = telebot.TeleBot(
-    '5239532565:AAFZZIcBy93DxEt8vsrGWTxKhQiSzdnzFlw')          # If you don't know what to do with that, read https://core.telegram.org/bots
+    'token')          # If you don't know what to do with that, read https://core.telegram.org/bots
 
 
 @bot.message_handler(commands=['start'])  # Start op bot
